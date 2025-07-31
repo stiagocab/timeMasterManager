@@ -4,9 +4,12 @@ import { ColorsKey, Palette } from "@/styles/colors.keys";
 import { BorderRadiusKey } from "@/styles/unistyles";
 import type { IconProps as PhosphorIconProps } from "phosphor-react-native";
 import React from "react";
-import { PressableProps, StyleProp, ViewStyle } from "react-native";
+import { StyleProp, ViewStyle } from "react-native";
 import { StyleSheet, UnistylesVariants } from "react-native-unistyles";
-import { PressableScale } from "../animations/PressableScale";
+import {
+  PressableScale,
+  PressableScaleProps,
+} from "../animations/PressableScale";
 import { ThemedIcon } from "../icons";
 
 const styles = StyleSheet.create((theme) => ({
@@ -43,16 +46,19 @@ const styles = StyleSheet.create((theme) => ({
 
 type Variant = "filled" | "transparent";
 
-export interface IconButtonProps extends UnistylesVariants<typeof styles> {
+export interface IconButtonProps
+  extends UnistylesVariants<typeof styles>,
+    PressableScaleProps {
   icon: React.ComponentType<PhosphorIconProps>;
   color?: ColorsKey;
   variant?: Variant;
   style?: StyleProp<ViewStyle>;
   borderRadius?: BorderRadiusKey;
-  onPress?: PressableProps["onPress"];
-  onLongPress?: PressableProps["onLongPress"];
-  onPressIn?: PressableProps["onPressIn"];
-  onPressOut?: PressableProps["onPressOut"];
+  disabled?: boolean;
+  // onPress?: PressableProps["onPress"];
+  // onLongPress?: PressableProps["onLongPress"];
+  // onPressIn?: PressableProps["onPressIn"];
+  // onPressOut?: PressableProps["onPressOut"];
 }
 
 export function IconButton({
@@ -76,7 +82,7 @@ export function IconButton({
       <ThemedIcon
         icon={icon}
         size={size}
-        colorKey={
+        color={
           variant === "filled"
             ? (`${color}Foreground` as keyof Palette)
             : (color as keyof Palette)

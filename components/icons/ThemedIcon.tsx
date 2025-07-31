@@ -20,9 +20,9 @@ export const iconSize = {
 
 export type IconSizeKey = keyof typeof iconSize;
 
-export type ThemedIconProps = PhosphorIconProps & {
+export type ThemedIconProps = Omit<PhosphorIconProps, "color"> & {
   icon: React.ComponentType<PhosphorIconProps>;
-  colorKey?: ColorsKey;
+  color?: ColorsKey;
   size?: IconSizeKey | number;
   weight?: PhosphorIconProps["weight"];
 };
@@ -38,14 +38,14 @@ export type ThemedIconProps = PhosphorIconProps & {
  */
 export function ThemedIcon({
   icon: IconComponent,
-  colorKey = "primaryForeground",
+  color = "primaryForeground",
   size = "sm",
   weight = "regular",
 }: ThemedIconProps) {
   const { theme } = useUnistyles();
-  const color = theme.colors[colorKey];
+  const colorKey = theme.colors[color];
 
   const resolvedSize = typeof size === "number" ? size : iconSize[size];
 
-  return <IconComponent size={resolvedSize} weight={weight} color={color} />;
+  return <IconComponent size={resolvedSize} weight={weight} color={colorKey} />;
 }

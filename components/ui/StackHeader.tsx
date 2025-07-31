@@ -23,7 +23,7 @@ export function StackHeader({
   headerRight,
   headerShown,
   headerTransparent = false,
-  color = "primaryForeground",
+  color = "backgroundForeground",
 }: StackHeaderProps) {
   const theme = useUnistyles();
   const navigation = useNavigation();
@@ -61,7 +61,7 @@ export function StackHeader({
           ? {
               title: title,
               headerTitle: () => (
-                <Typography variant="title" color="primaryForeground">
+                <Typography variant="title" color={color}>
                   {title}
                 </Typography>
               ),

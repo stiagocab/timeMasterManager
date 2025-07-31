@@ -19,7 +19,7 @@ export function TimerTile() {
               style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
             >
               <View style={styles.iconContainer}>
-                <ThemedIcon icon={TimerIcon} />
+                <ThemedIcon icon={TimerIcon} color="accentForeground" />
               </View>
               <Typography>Focus</Typography>
             </View>
@@ -32,22 +32,12 @@ export function TimerTile() {
       >
         <View>
           <Typography>HELLO</Typography>
+          {/* <Typography>HELLO</Typography>
           <Typography>HELLO</Typography>
           <Typography>HELLO</Typography>
-          <Typography>HELLO</Typography>
-          <Typography>HELLO</Typography>
+          <Typography>HELLO</Typography> */}
         </View>
       </Collapsible>
-
-      {/* {isExpanded && (
-        <View>
-          <Typography>HELLO</Typography>
-          <Typography>HELLO</Typography>
-          <Typography>HELLO</Typography>
-          <Typography>HELLO</Typography>
-          <Typography>HELLO</Typography>
-        </View>
-      )} */}
     </View>
   );
 }
@@ -64,7 +54,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   iconContainer: {
     borderRadius: theme.borderRadius.sm,
-    backgroundColor: theme.colors.border,
+    backgroundColor: theme.colors.accent,
     width: 40,
     height: 40,
 

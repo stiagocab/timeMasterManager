@@ -18,11 +18,10 @@ export default function MainScreen() {
           headerTransparent
           headerShown
           title="Productivity boost"
-          
           headerRight={
             <IconButton
               icon={IntersectThreeIcon}
-              color="text"
+              color="backgroundForeground"
               onPress={() => router.push("/design-system")}
               variant="transparent"
             />

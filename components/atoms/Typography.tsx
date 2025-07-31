@@ -1,8 +1,12 @@
 // Typography.tsx
+import { ColorsKey } from "@/styles/colors.keys";
 import { Text, TextProps } from "react-native";
 import { StyleSheet, UnistylesVariants } from "react-native-unistyles";
 
-export type TypographyProps = TextProps & UnistylesVariants<typeof styles> & {};
+export type TypographyProps = TextProps &
+  UnistylesVariants<typeof styles> & {
+    color?: ColorsKey;
+  };
 
 const styles = StyleSheet.create((theme) => ({
   typography: {
@@ -45,55 +49,26 @@ const styles = StyleSheet.create((theme) => ({
           lineHeight: theme.typography.fontSize.base * 1.3,
         },
       }, // VARIANTS END
-      color: {
-        default: { color: theme.colors.text },
-
-        primary: { color: theme.colors.primary },
-        primaryForeground: { color: theme.colors.primaryForeground },
-
-        secondary: { color: theme.colors.secondary },
-        secondaryForeground: { color: theme.colors.secondaryForeground },
-
-        accent: { color: theme.colors.accent },
-        accentForeground: { color: theme.colors.accentForeground },
-
-        background: { color: theme.colors.background },
-        backgroundForeground: { color: theme.colors.backgroundForeground },
-
-        surface: { color: theme.colors.surface },
-        surfaceForeground: { color: theme.colors.surfaceForeground },
-
-        text: { color: theme.colors.text },
-
-        border: { color: theme.colors.border },
-        borderForeground: { color: theme.colors.borderForeground },
-
-        highlight: { color: theme.colors.highlight },
-        highlightForeground: { color: theme.colors.highlightForeground },
-
-        info: { color: theme.colors.info },
-        infoForeground: { color: theme.colors.infoForeground },
-
-        success: { color: theme.colors.success },
-        successForeground: { color: theme.colors.successForeground },
-
-        warning: { color: theme.colors.warning },
-        warningForeground: { color: theme.colors.warningForeground },
-
-        error: { color: theme.colors.error },
-        errorForeground: { color: theme.colors.errorForeground },
-      },
-    }, // COLORS END
+    },
+  },
+  color: (color: ColorsKey) => {
+    return { color };
   },
 }));
 
-function Typography({ style, color, variant, ...rest }: TypographyProps) {
+function Typography({
+  style,
+  color = "text",
+  variant,
+  ...rest
+}: TypographyProps) {
   styles.useVariants({
     variant,
-    color,
   });
 
-  return <Text style={[styles.typography, style]} {...rest} />;
+  return (
+    <Text style={[styles.typography, styles.color(color), style]} {...rest} />
+  );
 }
 
 export { Typography };

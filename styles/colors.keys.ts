@@ -14,7 +14,7 @@ export const COLOR_KEYS = [
   "text",
 ] as const;
 
-export type ColorKey = (typeof COLOR_KEYS)[number];
+type ColorKey = (typeof COLOR_KEYS)[number];
 
 export type ColorsKey = ColorKey | `${ColorKey}Foreground`;
 
