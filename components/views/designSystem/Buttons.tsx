@@ -28,7 +28,12 @@ export default function ButtonsPreview() {
       title="Buttons"
       rightIcon={<ThemedIcon icon={HandPointingIcon} />}
     >
-      <View style={{ gap: 20, paddingBottom: 30 }}>
+      <View
+        style={{
+          gap: 20,
+          paddingBottom: 30,
+        }}
+      >
         <View>
           <Typography variant="subtitle">Variants: Default filled</Typography>
           <Divider />

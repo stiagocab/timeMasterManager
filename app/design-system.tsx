@@ -1,96 +1,79 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 
 import { SafeAreaView, ScrollView, View } from "react-native";
 
-import { DotsThreeIcon, PaletteIcon } from "phosphor-react-native";
-import { useUnistyles } from "react-native-unistyles";
+import BottomSheet from "@gorhom/bottom-sheet";
+import { StyleSheet } from "react-native-unistyles";
 
-import { PressableScale } from "@/components/animations/PressableScale";
-import {
-  ScreenView,
-  ScreenViewProps,
-  Typography,
-  TypographyProps,
-} from "@/components/atoms";
-import { Collapsible } from "@/components/elements/Collapsible";
-import { ThemedIcon } from "@/components/icons";
+import { ScreenView, Typography } from "@/components/atoms";
 import { StackHeader } from "@/components/ui";
 import ButtonsPreview from "@/components/views/designSystem/Buttons";
+import Colors from "@/components/views/designSystem/Colors";
+import { ThemePickerModal } from "@/components/views/designSystem/ThemePickerModal";
 import TypographyPreview from "@/components/views/designSystem/Typography";
-import { lightTheme } from "@/styles/unistyles";
+import { usePreferencesStore } from "@/store";
 
 export default function DesignSystemScreen() {
-  const theme = useUnistyles();
+  const preferences = usePreferencesStore((p) => p);
+
+  // ref
+  const bottomSheetRef = useRef<BottomSheet>(null);
+
+  useEffect(() => {
+    bottomSheetRef.current?.close();
+  }, [bottomSheetRef.current?.close]);
+
+  const handleSheetChanges = useCallback((index: number) => {
+    console.log("handleSheetChanges", index);
+  }, []);
 
   return (
-    <ScreenView bgColor="background">
-      <SafeAreaView style={{ flex: 1 }}>
-        <StackHeader
-          headerTransparent={true}
-          title="Design system"
-          headerRight={
-            <PressableScale>
-              <DotsThreeIcon
-                color={theme.theme.colors.text}
-                size={25}
-                weight="bold"
-              />
-            </PressableScale>
-          }
-        />
+    <>
+      <ScreenView bgColor="background">
+        <SafeAreaView style={{ flex: 1 }}>
+          <StackHeader
+            headerTransparent={true}
+            title="Design system"
+            headerRight={<ThemePickerModal onSelectTopic={console.log} />}
+            // headerRight={
+            //   <PressableScale>
+            //     <ThemedIcon icon={DotsThreeIcon} color="text" />
+            //   </PressableScale>
+            // }
+          />
 
-        <ScrollView style={{ flex: 1 }}>
-          {/* Typography */}
+          <ScrollView style={{ flex: 1 }}>
+            {/* Typography */}
 
-          <View style={{ gap: 20, marginTop: 20 }}>
-            <TypographyPreview />
+            <Typography>Current theme {preferences.theme}</Typography>
 
-            {/* BUTTONS */}
+            <View style={{ gap: 20, marginTop: 20 }}>
+              <TypographyPreview />
 
-            <ButtonsPreview />
+              {/* BUTTONS */}
 
-            {/* COLORS */}
+              <ButtonsPreview />
 
-            <Collapsible
-              title="Colors"
-              rightIcon={<ThemedIcon icon={PaletteIcon} />}
-            >
-              <View
-                style={{
-                  justifyContent: "space-between",
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                }}
-              >
-                {Object.keys(lightTheme.colors)
-                  .filter((item) => !item.includes("Fore"))
-                  .map((variant, index) => (
-                    <ScreenView
-                      key={index}
-                      bgColor={variant as ScreenViewProps["bgColor"]}
-                      style={{
-                        flex: undefined,
-                        width: "50%",
-                        height: 100,
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Typography
-                        variant="body"
-                        color={
-                          `${variant}Foreground` as TypographyProps["color"]
-                        }
-                      >
-                        {variant}
-                      </Typography>
-                    </ScreenView>
-                  ))}
-              </View>
-            </Collapsible>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </ScreenView>
+              {/* COLORS */}
+
+              <Colors />
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </ScreenView>
+    </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "red",
+  },
+  contentContainer: {
+    flex: 1,
+    padding: 36,
+    backgroundColor: "navy",
+    alignItems: "center",
+  },
+});

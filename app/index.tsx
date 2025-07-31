@@ -18,6 +18,7 @@ export default function MainScreen() {
           headerTransparent
           headerShown
           title="Productivity boost"
+          
           headerRight={
             <IconButton
               icon={IntersectThreeIcon}

@@ -13,6 +13,7 @@
   "dependencies": {
     "@expo-google-fonts/nunito": "^0.4.1",
     "@expo/vector-icons": "^14.1.0",
+    "@gorhom/bottom-sheet": "^5",
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
@@ -30,6 +31,7 @@
     "expo-symbols": "~0.4.5",
     "expo-system-ui": "~5.0.10",
     "expo-web-browser": "~14.2.0",
+    "immer": "^10.1.1",
     "phosphor-react-native": "^3.0.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -37,6 +39,7 @@
     "react-native-edge-to-edge": "^1.6.2",
     "react-native-gesture-handler": "~2.24.0",
     "react-native-mmkv": "^3.3.0",
+    "react-native-modalize": "^2.1.1",
     "react-native-nitro-modules": "^0.26.3",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
@@ -45,8 +48,7 @@
     "react-native-unistyles": "^3.0.2",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
-    "valtio": "^2.1.5",
-    "valtio-persist": "^2.2.4"
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -55,5 +57,6 @@
     "eslint": "^9.25.0",
     "eslint-config-expo": "~9.2.0"
   },
-  "private": true
+  "private": true,
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

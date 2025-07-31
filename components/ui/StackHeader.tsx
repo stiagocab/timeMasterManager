@@ -44,7 +44,11 @@ export function StackHeader({
         headerLeft: (props) => {
           if (!props.canGoBack) return;
           return (
-            <PressableScale onPress={navigation.goBack} targetScale={0.7}>
+            <PressableScale
+              // style={{ backgroundColor: "red" }}
+              onPress={navigation.goBack}
+              targetScale={0.7}
+            >
               <CaretLeftIcon
                 size={25}
                 weight="bold"
