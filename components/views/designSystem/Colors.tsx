@@ -11,7 +11,7 @@ import {
 } from "@/components/atoms";
 import { Collapsible } from "@/components/elements";
 import { ThemedIcon } from "@/components/icons";
-import { light } from "@/styles/unistyles";
+import { lightThemeColors } from "@/styles/colors/colors";
 
 export default function Colors() {
   return (
@@ -23,7 +23,7 @@ export default function Colors() {
           flexWrap: "wrap",
         }}
       >
-        {Object.keys(light.colors)
+        {Object.keys(lightThemeColors)
           .filter((item) => !item.includes("Fore"))
           .map((variant, index) => (
             <ScreenView

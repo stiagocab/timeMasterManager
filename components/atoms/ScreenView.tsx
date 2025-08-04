@@ -3,13 +3,13 @@
 import React, { PropsWithChildren } from "react";
 import { View, ViewProps } from "react-native";
 import { StyleSheet, useUnistyles } from "react-native-unistyles";
-
-import type { ColorsKey } from "@/styles/colors.keys";
+//
+import type { ColorsKey } from "@/styles/colors/colors.keys";
 
 const styles = StyleSheet.create((theme) => ({
   root: {
     flex: 1,
-    paddingHorizontal: theme.spacing.horizontal,
+    paddingHorizontal: theme.spacing.lg,
   },
 }));
 

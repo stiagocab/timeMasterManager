@@ -1,3 +1,4 @@
+
 // colors.keys.ts
 export const COLOR_KEYS = [
   "primary",
@@ -14,10 +15,25 @@ export const COLOR_KEYS = [
   "text",
 ] as const;
 
-type ColorKey = (typeof COLOR_KEYS)[number];
+export type ColorKey = (typeof COLOR_KEYS)[number];
 
 export type ColorsKey = ColorKey | `${ColorKey}Foreground`;
 
 export type Palette = {
   [K in ColorKey | `${ColorKey}Foreground`]: string;
 };
+
+type SpacingBreakPoints = {
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+};
+
+export interface ThemePalette {
+  colors: Palette;
+  // typography: typeof themeTypography;
+  spacing: SpacingBreakPoints;
+  borderRadius: SpacingBreakPoints;
+}

@@ -1,6 +1,6 @@
-// Typography.tsx
-import { ColorsKey } from "@/styles/colors.keys";
 import { Text, TextProps } from "react-native";
+
+import type { ColorsKey } from "@/styles/colors/colors.keys";
 import { StyleSheet, UnistylesVariants } from "react-native-unistyles";
 
 export type TypographyProps = TextProps &
@@ -51,8 +51,14 @@ const styles = StyleSheet.create((theme) => ({
       }, // VARIANTS END
     },
   },
-  color: (color: ColorsKey) => {
-    return { color };
+  color: (key: ColorsKey) => {
+    const resolved = theme.colors[key as keyof typeof theme.colors];
+    if (__DEV__ && resolved == null) {
+      console.warn(
+        `[Typography] color "${String(key)}" no existe en theme.colors`
+      );
+    }
+    return { color: resolved ?? theme.colors.text };
   },
 }));
 
