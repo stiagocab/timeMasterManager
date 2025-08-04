@@ -17,7 +17,7 @@ const styles = StyleSheet.create((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "flex-start",
-    borderRadius: theme.borderRadius.full,
+    borderRadius: theme.borderRadius.xl,
     variants: {
       disabled: {
         true: { opacity: 0.6 },

@@ -1,4 +1,4 @@
-import { ColorsKey } from "@/styles/colors.keys";
+import { ColorsKey } from "@/styles/colors/colors.keys";
 import type { IconProps as PhosphorIconProps } from "phosphor-react-native";
 import React from "react";
 import { useUnistyles } from "react-native-unistyles";
@@ -43,6 +43,7 @@ export function ThemedIcon({
   weight = "regular",
 }: ThemedIconProps) {
   const { theme } = useUnistyles();
+
   const colorKey = theme.colors[color];
 
   const resolvedSize = typeof size === "number" ? size : iconSize[size];

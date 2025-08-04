@@ -15,7 +15,10 @@ import { lightThemeColors } from "@/styles/colors/colors";
 
 export default function Colors() {
   return (
-    <Collapsible title="Colors" rightIcon={<ThemedIcon icon={PaletteIcon} />}>
+    <Collapsible
+      title="Colors"
+      rightIcon={<ThemedIcon icon={PaletteIcon} color="backgroundForeground" />}
+    >
       <View
         style={{
           justifyContent: "space-between",

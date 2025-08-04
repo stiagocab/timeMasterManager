@@ -1,9 +1,12 @@
 import React from "react";
 
-import { ColorsKey, Palette } from "@/styles/colors.keys";
-import { PressableProps, StyleProp, ViewStyle } from "react-native";
+import { ColorsKey, Palette } from "@/styles/colors/colors.keys";
+import { StyleProp, ViewStyle } from "react-native";
 import { StyleSheet, UnistylesVariants } from "react-native-unistyles";
-import { PressableScale } from "../animations/PressableScale";
+import {
+  PressableScale,
+  PressableScaleProps,
+} from "../animations/PressableScale";
 
 import { CircularProgress } from "./CircularProgress";
 import { Typography } from "./Typography";
@@ -100,8 +103,9 @@ const styles = StyleSheet.create((theme) => ({
 const variants = ["filled", "outlined", "text", "link"] as const;
 type Variant = (typeof variants)[number];
 
-type ButtonProps = Omit<PressableProps, "style"> &
+type ButtonProps = PressableScaleProps &
   UnistylesVariants<typeof styles> & {
+    disabled?: boolean;
     style?: StyleProp<ViewStyle>;
     title: string;
     variant?: Variant;
@@ -132,7 +136,7 @@ export function Button({
       disabled={disabled || isLoading}
       style={[styles.root, styles.button(color, variant), style]}
     >
-      {isLoading && (
+      {isLoading ? (
         <CircularProgress
           size={24}
           strokeWidth={3}
@@ -140,8 +144,7 @@ export function Button({
           trackColor="rgba(255,255,255,.15)"
           duration={750}
         />
-      )}
-      {!isLoading && (
+      ) : (
         <Typography variant="body" style={styles.label(color, variant)}>
           {title}
         </Typography>

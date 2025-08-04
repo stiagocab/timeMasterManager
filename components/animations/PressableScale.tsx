@@ -1,6 +1,6 @@
 // src/animations/PressableScale.tsx
 
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -22,9 +22,9 @@ const DEFAULT_SCALE = 0.96;
 const DEFAULT_DURATION = 100;
 
 // Exclude style and press handlers so we control them
-type BaseProps = Omit<PressableProps, "style">;
+type BaseProps = Omit<PressableProps, "style" | "children">;
 
-export interface PressableScaleProps extends BaseProps {
+export interface PressableScaleProps extends BaseProps, PropsWithChildren {
   /**
    * Target scale applied while the component is pressed.
    * Defaults to 0.95.

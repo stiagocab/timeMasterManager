@@ -26,7 +26,9 @@ export default function ButtonsPreview() {
   return (
     <Collapsible
       title="Buttons"
-      rightIcon={<ThemedIcon icon={HandPointingIcon} />}
+      rightIcon={
+        <ThemedIcon icon={HandPointingIcon} color="backgroundForeground" />
+      }
     >
       <View
         style={{

@@ -11,7 +11,7 @@ export default function TypographyPreview() {
   return (
     <Collapsible
       title="Typography"
-      rightIcon={<ThemedIcon icon={TextAaIcon} />}
+      rightIcon={<ThemedIcon icon={TextAaIcon} color="backgroundForeground" />}
     >
       <View>
         {typographyVariants.map((variant) => (
