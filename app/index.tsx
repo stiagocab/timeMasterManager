@@ -1,18 +1,20 @@
 import React from "react";
 
+import { SafeAreaView, ScrollView } from "react-native";
+
 import { useRouter } from "expo-router";
-import { SafeAreaView, View } from "react-native";
+import { IntersectThreeIcon } from "phosphor-react-native";
 
 import { IconButton, ScreenView } from "@/components/atoms";
 import { TimerTile } from "@/components/elements";
 import { StackHeader } from "@/components/ui";
-import { IntersectThreeIcon } from "phosphor-react-native";
+import { pomodoro, runningCycle, testCycle } from "@/mocks";
 
 export default function MainScreen() {
   const router = useRouter();
 
   return (
-    <ScreenView>
+    <ScreenView style={{ paddingHorizontal: 0 }}>
       <>
         <StackHeader
           headerTransparent
@@ -28,11 +30,15 @@ export default function MainScreen() {
           }
         />
         <SafeAreaView style={{ flex: 1 }}>
-          <View style={{ flex: 1 }}>
-            <TimerTile />
-            <TimerTile />
-            <TimerTile />
-          </View>
+          <ScrollView style={{ flex: 1 }}>
+            <ScreenView>
+              <TimerTile cycle={pomodoro} />
+              <TimerTile cycle={testCycle} />
+              <TimerTile cycle={runningCycle} />
+              {/* <TimerTile />
+            <TimerTile /> */}
+            </ScreenView>
+          </ScrollView>
         </SafeAreaView>
       </>
     </ScreenView>

@@ -1,6 +1,6 @@
 // src/components/IconButton.tsx
 
-import { ColorsKey, Palette } from "@/styles/colors.keys";
+import { ColorsKey, Palette } from "@/styles/colors/colors.keys";
 import { BorderRadiusKey } from "@/styles/unistyles";
 import type { IconProps as PhosphorIconProps } from "phosphor-react-native";
 import React from "react";
@@ -17,16 +17,15 @@ const styles = StyleSheet.create((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "flex-start",
-    borderRadius: theme.borderRadius.xl,
     variants: {
       disabled: {
         true: { opacity: 0.6 },
       },
       size: {
-        sm: { width: 42, height: 42 },
-        md: { width: 48, height: 48 },
-        lg: { width: 55, height: 55 },
-        xl: { width: 60, height: 60 },
+        sm: { width: 42, height: 42, borderRadius: 22 },
+        md: { width: 48, height: 48, borderRadius: 25 },
+        lg: { width: 55, height: 55, borderRadius: 30 },
+        xl: { width: 60, height: 60, borderRadius: 33 },
       },
     },
   },
